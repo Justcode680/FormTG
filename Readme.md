@@ -1,5 +1,6 @@
-# FormTG - Telegram Bot Form Integration
+<h1 id="top">FormTG - Telegram Bot Form Integration</h1>
 
+ 
 This project demonstrates a simple integration of HTML forms with the Telegram API. By following the instructions below, you can create an HTML form that allows users to submit data, and the submissions will be sent directly to your Telegram chat using the Telegram Bot API.
 
 ## Prerequisites
@@ -116,3 +117,5 @@ function submitForm() {
 By following these steps, you can easily integrate HTML forms with the Telegram API, allowing you to receive user submissions directly in your Telegram chat. Feel free to customize the HTML and JavaScript code further based on your specific requirements and design preferences.
 
 Happy coding! 🚀
+
+<a href="#top" align="right">(Back to top)</a>
