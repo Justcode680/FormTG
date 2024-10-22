@@ -5,105 +5,70 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Telegram Bot Form Integration</title>
-    <style>
-    /* Style inputs with type="text", select elements and textareas */
-input[type=text], input[type=email], textarea {
-  width: 100%; /* Full width */
-  padding: 12px; /* Some padding */ 
-  border: 1px solid #ccc; /* Gray border */
-  border-radius: 4px; /* Rounded borders */
-  box-sizing: border-box; /* Make sure that padding and width stays in place */
-  margin-top: 6px; /* Add a top margin */
-  margin-bottom: 16px; /* Bottom margin */
-  resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
-}
-
-/* Style the submit button with a specific background color etc */
-button {
-  background-color: #04AA6D;
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-/* When moving the mouse over the submit button, add a darker green color */
-button:hover {
-  background-color: #45a049;
-}
-
-/* Add a background color and some padding around the form */
-.container {
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 20px;
-}
-</style>
 </head>
 <body>
-<h1 align="center">FormTG</h1>
-<p align="center">This project demonstrates a simple integration of HTML forms with the Telegram API. By following the instructions below, you can create an HTML form that allows users to submit data, and the submissions will be sent directly to your Telegram chat using the Telegram Bot API.</p>
-  
-  <h2 align="center">Test Below</h2>
+
     <!-- Your HTML Form -->
-    <form id="contactForm">
-        <label for="userId">Your Telegram User ID:</label>
-        <input type="text" id="userId" name="userId" required><br>
+<form id="contactForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required><br>
 
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required><br>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required><br>
 
-        <label for="message">Message:</label>
-        <textarea id="message" name="message" rows="4" required></textarea><br>
+    <label for="message">Message:</label>
+    <textarea id="message" name="message" rows="4" required></textarea><br>
 
-        <button type="button" onclick="submitForm()">Submit</button>
-    </form>
+    <button type="button" onclick="submitForm()">Submit</button>
+</form>
+    
 
-    <script>
-        function submitForm() {
-            var userId = document.getElementById("userId").value;
-            var name = document.getElementById("name").value;
-            var message = document.getElementById("message").value;
-
-            var formData = {
-                'Name': name,
-                'Message': message
-            };
-
-            // Replace with your actual bot token
-            var botToken = '7762081468:AAG7s_Iy01-QTJri4J3Im13xtTLjfeNTFj0';
-
-            var htmlMessage = "<b>Test Done Successfully</b>\n\n";
-            for (var key in formData) {
-                htmlMessage += "<b>" + key + ":</b> " + formData[key] + "\n";
-            }
-
-            var apiUrl = "https://api.telegram.org/bot" + botToken + "/sendMessage";
-
-            var params = {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    chat_id: userId, // Use the entered user ID here
-                    text: htmlMessage,
-                    parse_mode: 'HTML',
-                }),
-            };
-
-            fetch(apiUrl, params)
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Message sent successfully:', data);
-                    alert('Message sent successfully!');
-                })
-                .catch(error => {
-                    console.error('Error sending message:', error);
-                    alert('Error sending message. Please try again.');
-                });
+<script>
+    function submitForm() {
+        var name = document.getElementById("name").value;
+        var email = document.getElementById("email").value;
+        var message = document.getElementById("message").value;
+    
+        var formData = {
+            'Name': name,
+            'Email': email,
+            'Message': message
+        };
+    
+        // Replace with your actual bot token and chat ID
+        var botToken = 'your_bot_token';
+        var chatId = 'your_chat_id';
+    
+        var htmlMessage = "<b>New Form Submission</b>\n\n";
+        for (var key in formData) {
+            htmlMessage += "<b>" + key + ":</b> " + formData[key] + "\n";
         }
+    
+        var apiUrl = "https://api.telegram.org/bot" + botToken + "/sendMessage";
+    
+        var params = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                chat_id: chatId,
+                text: htmlMessage,
+                parse_mode: 'HTML',
+            }),
+        };
+    
+        fetch(apiUrl, params)
+            .then(response => response.json())
+            .then(data => {
+                console.log('Message sent successfully:', data);
+                alert('Message sent successfully!');
+            })
+            .catch(error => {
+                console.error('Error sending message:', error);
+                alert('Error sending message. Please try again.');
+            });
+    }
     </script>
 </body>
 </html>
