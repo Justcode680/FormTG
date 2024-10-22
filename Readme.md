@@ -8,7 +8,7 @@ This project demonstrates a simple integration of HTML forms with the Telegram A
 Before you get started, make sure you have the following:
 
 - A Telegram bot created using the [BotFather](https://core.telegram.org/bots#botfather).
-- Your Telegram bot token and chat ID.
+- Your Telegram bot token and chat ID. (use [RawdataBot](https://t.me/raw_data_bot) to find your chat id)
 - A basic understanding of HTML and JavaScript.
 
 ## Usage
